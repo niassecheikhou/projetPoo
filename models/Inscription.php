@@ -1,4 +1,6 @@
 <?php 
+    namespace App\Model;
+    Use App\Core\Model;
  class Inscription extends Model{ 
      // ManyToOne avec AC
      private int $id;

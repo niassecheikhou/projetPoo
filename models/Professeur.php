@@ -2,10 +2,11 @@
     namespace App\Model;
 
 class Professeur extends Personne{
-    
+    private string $grade;
     public function __construct(){
-        self::$role="ROLE_PROFESSEUR";
-        self::table();
+        parent::$role="ROLE_PROFESSEUR";
+        // self::table();
+    
     }
 
     // fonctions de navigationnelles
@@ -15,9 +16,38 @@ class Professeur extends Personne{
     }
     public static function findAll():array
     {
-        $sql= "select *from ".parent::table()." where role like 'ROLE_PROFESSUER'";
-        echo $sql;
-        return [];
+        
+         // appel de de la fonction dataBase 
+         $db=parent::database();
+         // ouvrir la connection
+         $db->connexionBD();
+      
+         $sql= "select *from ".parent::table()." where role like 'ROLE_PROFESSEUR'";
+         $result=$db->executeSelect($sql);
+            // pour fermer la c
+            
+         $db->closeConnexion();
+        
+        return $result;
+    }
+    public function insert():int
+    {
+         // appel de de la fonction dataBase 
+         $db=parent::database();
+         
+         // ouvrir la connection
+         $db->connexionBD();
+        
+            $sql = "INSERT INTO `personne` (`nom_complet`, `role`, `grade`) VALUES (?,?,?)";   
+            
+            var_dump($sql) ;die();
+            $result=$db->executeUpdate($sql,[$this->nomComplet,parent::$role,$this->grade]);
+            
+            // pour fermer la connection
+         $db->closeConnexion();
+         
+        return $result;
+     
     }
 
 
@@ -27,4 +57,24 @@ class Professeur extends Personne{
     
    // selectAll()=> select * from table;
    //selectById()=>select *from table where id=1;
+
+    /**
+     * Get the value of grade
+     */ 
+    public function getGrade()
+    {
+        return $this->grade;
+    }
+
+    /**
+     * Set the value of grade
+     *
+     * @return  self
+     */ 
+    public function setGrade($grade)
+    {
+        $this->grade = $grade;
+
+        return $this;
+    }
 }

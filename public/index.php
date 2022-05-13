@@ -1,12 +1,21 @@
 <?php
 // composseur en faissant de autoloding
+ini_set("display_errors","ON");
+ini_set("error_reporting", E_ALL);
+
 require_once("../vendor/autoload.php");
     use App\Model\AC;
     use App\Model\Personne;
     use App\Model\Professeur;
     use App\Model\User;
 
-    Professeur::findAll();
+    // $prof=new Professeur();
+    // $prof->setNomComplet('Pape sow');
+    // $prof->setGrade('Etudiant');
+    // $prof->insert();
+     Professeur::findAll();
+    
+    
 
 
 
