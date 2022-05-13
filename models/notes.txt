@@ -1,0 +1,83 @@
+/*
+   1- le principe de l'incaptulation dit que les attribut s d'une 
+    classe sont a privée alors que les methodes sont a public
+    2- donner un etat a un objet: c'est la valeur de ses attribut a un instant t
+    3- (->)est un operateur de porté d'instance(objet)
+    4- faire peres1->  on entraint de demander l'interface de la classe ie tous les attributs et methodes public de la classe
+    5 - Getters & setters:
+    getters :sont des methodes public qui permet d'obtenir la valeur d'un attribut privée ou protected au niveau de l'interface de l'objet
+    setters : sont des methodes public qui permet de modifier la valeur d'un attribut privée ou protected au niveau de l'interface de l'objet
+    6- une classe concrete est une classe qui produit des objets(par defaut en php toutes les classe sont concrete) 
+    et elle ne contient que des methodes concrete 
+    une methode concrete est une methode dont on connais sa definition
+    exemple : 
+    class Personne(){
+        private $id;
+        private $username;
+    }
+    7-une classe abstraite est une classe qui ne produit pas d'objet
+    une classe abstraite peut contenir des methodes concrete et des methodes abstraite
+    exemple : 
+     abstact class Personne(){
+        private $id;
+        private $username;
+    }
+    8- il est imposible d'instancier une  classe abstraite
+    9- une classe finale est une classe qui ne peut pas avoir de classe fille ie elle ne peut pas avoir une specialisation(steril)
+    exemple : 
+     final class Personne(){
+        private $id;
+        private $username;
+    }
+    10- on accede a un attribut d'instance a travers THIS mais s'il s'agit d'une attribut de classe ou stattic on y accede a travers SELF:: 
+    11- SELF signifie la classe et (::) sont des aperateurs de porté de classe
+
+12- lorsque une classe herite d'une autre classe : elle herite l'ensemble de ses objets et l'ensemble de ses methodes.
+13- si on met Final a une classe cela veut dire que on ne veut pas que cette classe soit herité.
+14- les attributs navigationnels: sont des attributs issu des relations ou associations
+
+question j'ai pas bien compris quant on doit creer une interface ou une classe ?
+
+explication
+// 1 inclure le ficher de la class 
+    require_once( "../models/Personne.php");
+    require_once( "../models/User.php");
+    require_once( "../models/AC.php");
+    require_once( "../models/Inscription.php");
+// pour faire un chargement automatique on telecharge : composer 
+
+
+    // 2 creation de l'objet ou instanciations
+    // $pers1=new Personne();
+    // $pers2=new Personne();
+    // 3 donner un etat a un objet 
+//     $pers1->setId(1);
+//     $pers1->setNomComplet('Baila wane');
+
+//     $pers2->setId(2);
+//     $pers2->setNomComplet('Ali tall niang');
+
+//     echo $pers1->getId();
+//     echo $pers1->getNomComplet();
+
+//     echo $pers2->getId();
+//     echo $pers2->getNomComplet();
+
+//     // pour appeller une methode statique
+//     Personne::setNobrePersonne(12);
+//    echo Personne::getNbrePersonne();
+// $pers2=new User();
+// $pers2->setId(2);
+// $pers2 ->setNomComplet('Ali tall niang');
+ $ac=new Ac();
+ echo $ac->getRole(); 
+ $inscript=new Inscription(); 
+ $inscript->ac();
+ $inscript->anneeScolaire();
+   
+
+Personne::findAll();//select * from personne;
+User::findAll(); // select * from personne where role not like 'ROLE_PROFESSUER';
+AC::findAll();// cela me donne tous les AC  select * from personne where role like 'ROLE_AC';
+Professeur::findAll(); //select * from personne where role like 'ROLE_PROFESSEUR';  
+*/ 

@@ -1,0 +1,17 @@
+{
+    "name": "cheikhou/pooprojet",
+    "autoload": {
+        "psr-4": {
+            "App\\Core\\":"core/",
+            "App\\Model\\":"models/",
+            "App\\Controller\\":"controllers/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Niasse cheikhou",
+            "email": "niassecheikhou@gmail.com"
+        }
+    ],
+    "require": {}
+}
