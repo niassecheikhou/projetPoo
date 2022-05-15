@@ -4,47 +4,58 @@ ini_set("display_errors","ON");
 ini_set("error_reporting", E_ALL);
 
 require_once("../vendor/autoload.php");
-    use App\Model\AC;
-    use App\Model\Personne;
-    use App\Model\Professeur;
-    use App\Model\User;
+require_once("../core/fonction.php");
 
-    // $prof=new Professeur();
-    // $prof->setNomComplet('Pape sow');
-    // $prof->setGrade('Etudiant');
-    // $prof->insert();
-     Professeur::findAll();
+     use App\Controller\SecurityController;
+     use App\Controller\ClasseController;
+    use App\Core\Request;
+    use App\Core\Router;
+
+     
+
+
+$request =new Router();
+$router->route('/login',[SecurityController::class,"authentication"]);
+$router->route('/logout',[SecurityController::class,"deconnexion"]);
+
+$router->route('/classes',[SecurityController::class,"ListerClasse"]);
+$router->route('/classes/add',[SecurityController::class,"CreerClasse"]);
+
+$router->resolve();
+
+// $request ->getUri();
+// // dd($request ->isGet()); 
+// dd($request ->isPost()); 
+
+
+
+    // use App\Model\AC;
+    // use App\Model\Personne;
+    // use App\Model\Professeur;
+    // use App\Model\User;
+
+    // $ac=new AC();
+    // $ac->setNomComplet('Barham niass');
+    // $ac->setLogin('niass@gmail.com');
+    // $ac->setPassword('niass11');
+    // $ac->insert();
+    // $ac=AC::findAll();
+
+    // $users=User::findAll();
+    // $userConnect=User::findUserLoginAndPassword("niasse@gmail.com","niass11");
+    // dd($userConnect);
+    
+    
+    
+
+
+
     
     
 
 
 
-    
-    // try {
-    //     $ac=new AC();
-    //     echo "bonjoiur";
-    //     Professeur::findAll();
-    //     }
-    //     catch(Exception $e){
-    //         die($e->getMessage()); 
-    //     }
-
-
-    //composer un outil de gestionnaire de dependences
-    //gestionnaire=> un logiel qu'il faut installer dont l'objectif est de telecharger un dependance et de la configurer dans le projet
-    //dependence=> toutes les classes qu'on peut ajouter dans nos projet pour optenir des fonctionalités suplementaires
-    //hub de dependance => un site ou on regroupe toute les dependance du language 
-
-//NameSpace=>pakage qui un regroupement de fonctionnalite et de classe
 
 
 
 
-
-
-
-// $personne=new personne();
-// echo Personne:: table();
-// echo User::table();
-// echo RP::table();
-// Classe::findAll();

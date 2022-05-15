@@ -72,7 +72,7 @@
         // ?=> est appeler jocker: 
         //dont le premier est a la position 0 et le second s'il existe a la position 1
            $sql ="select * from ".self::table()." where id=?";
-          $result=$db->executeSelect( $sql,[$id,]);
+          $result=$db->executeSelect( $sql,[$id]);
         // pour fermer la connection
         $db->closeConnexion();
         
@@ -86,7 +86,7 @@
         // ouvrir la connection
         $db->connexionBD();
            
-          $result=$db->executeSelect( $sql,$data,$single=false );
+          $result=$db->executeSelect( $sql,$data,$single);
         // pour fermer la connection
         $db->closeConnexion();
         

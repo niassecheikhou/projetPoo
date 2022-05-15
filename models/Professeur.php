@@ -22,13 +22,13 @@ class Professeur extends Personne{
          // ouvrir la connection
          $db->connexionBD();
       
-         $sql= "select *from ".parent::table()." where role like 'ROLE_PROFESSEUR'";
-         $result=$db->executeSelect($sql);
+         $sql= "select `nom_complet`, `role`, `grade` from ".parent::table()." where role like 'ROLE_PROFESSEUR'";
+         $results=$db->executeSelect($sql);
             // pour fermer la c
             
          $db->closeConnexion();
         
-        return $result;
+        return $results;
     }
     public function insert():int
     {
@@ -40,7 +40,7 @@ class Professeur extends Personne{
         
             $sql = "INSERT INTO `personne` (`nom_complet`, `role`, `grade`) VALUES (?,?,?)";   
             
-            var_dump($sql) ;die();
+            
             $result=$db->executeUpdate($sql,[$this->nomComplet,parent::$role,$this->grade]);
             
             // pour fermer la connection

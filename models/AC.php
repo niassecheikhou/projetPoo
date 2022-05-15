@@ -17,15 +17,46 @@
 
      public function __construct()
         {
-           //self::$role="ROLE_AC";
+           parent::$role="ROLE_AC";
             // $this->inscriptions=[];1ere approche
         }
         public static function findAll():array
       {
-         $sql= "select *from ".str_replace("app\\model\\","",parent::table())." where role not like 'ROLE_AC'";
-         echo $sql;
-         return [];
+        // appel de de la fonction dataBase 
+        $db=parent::database();
+        // ouvrir la connection
+        $db->connexionBD();
+          $sql= "select  `id`,`nom_complet`,`role`,`login`,`password` from ".parent::table()." where role like 'ROLE_AC'";
+          $results=$db->executeSelect($sql);
+            // pour fermer la c
+            
+         $db->closeConnexion();
+        
+        //  $sql= "select *from ".str_replace("app\\model\\","",parent::table())." where role not like 'ROLE_AC'";
+         return $results;
+         
+         
       }
+      public function insert():int
+      {
+           // appel de de la fonction dataBase 
+           $db=parent::database();
+           
+           // ouvrir la connection
+           $db->connexionBD();
+          
+              $sql = "INSERT INTO `personne` (`nom_complet`, `role`,`login`,`password`) VALUES (?,?,?,?)";   
+              
+              
+              $result=$db->executeUpdate($sql,[$this->nomComplet,parent::$role,$this->login,$this->password]);
+              
+              // pour fermer la connection
+           $db->closeConnexion();
+           
+          return $result;
+       
+      }
+  
         
     
     }

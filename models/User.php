@@ -69,13 +69,25 @@ abstract class User extends Personne{
     public static function findUserLoginAndPassword(string $login ,string $password ):object|null
     {
         
-        return self::findBy("select * from personne where login=? and password=?",[$login,$password,true]); 
+        return parent::findBy("select * from personne where login=? and password=?",[$login,$password],true); 
     } 
+    
     //redefinition 
     public static function findAll():array
     {
-        $sql= "select *from ".parent::table()." where role not like 'ROLE_PROFESSUER'";
-        echo $sql;
-        return [];
+         
+         // appel de de la fonction dataBase 
+         $db=parent::database();
+         // ouvrir la connection
+         $db->connexionBD();
+            $sql= "select *from ".parent::table()." where role not like 'ROLE_PROFESSEUR'";
+            $results=$db->executeSelect($sql);
+            // pour fermer la connexion
+            
+         $db->closeConnexion();
+        
+         return $results;
+    
+        
     }
 }
