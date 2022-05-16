@@ -9,9 +9,10 @@ namespace App\Core;
             $url=explode("/",$_SERVER["REQUEST_URI"]);
             // unset permet de suprimer
             unset($url[0]);
-            unset($url[1]);
-            unset($url[2]);
-            unset($url[3]);
+            // unset($url[1]);
+            // unset($url[2]);
+            // unset($url[3<    
+    
             //array values permet de reinitialiser les index 
             return (array_values($url)); 
         }
