@@ -76,17 +76,21 @@ abstract class User extends Personne{
     public static function findAll():array
     {
          
-         // appel de de la fonction dataBase 
-         $db=parent::database();
-         // ouvrir la connection
-         $db->connexionBD();
-            $sql= "select *from ".parent::table()." where role not like 'ROLE_PROFESSEUR'";
-            $results=$db->executeSelect($sql);
-            // pour fermer la connexion
+        //  // appel de de la fonction dataBase 
+        //  $db=parent::database();
+        //  // ouvrir la connection
+        //  $db->connexionBD();
+        //     $sql= "select *from ".parent::table()." where role not like 'ROLE_PROFESSEUR'";
+        //     $results=$db->executeSelect($sql);
+        //     // pour fermer la connexion
             
-         $db->closeConnexion();
+        //  $db->closeConnexion();
         
-         return $results;
+        //  return $results;
+        // ou bien on peut faire ca directement en appelant FindBy
+         $sql= "select *from ".parent::table()." where role not like 'ROLE_PROFESSEUR'";
+
+        return parent::findBy($sql);
     
         
     }

@@ -1,7 +1,9 @@
 <?php
 namespace App\Controller;
 
-class ClasseController{
+use App\Core\Controller;
+
+class ClasseController extends Controller{ 
     public function ListerClasse()
     {
 

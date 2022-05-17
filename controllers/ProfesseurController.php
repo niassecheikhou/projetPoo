@@ -1,7 +1,9 @@
 <?php
 namespace App\Controller;
 
-class ProfesseurController{
+use App\Core\Controller;
+
+class ProfesseurController extends Controller{
 
     public function afecterClasse()
     {

@@ -16,19 +16,18 @@ class Professeur extends Personne{
     }
     public static function findAll():array
     {
-        
-         // appel de de la fonction dataBase 
-         $db=parent::database();
-         // ouvrir la connection
-         $db->connexionBD();
-      
-         $sql= "select `nom_complet`, `role`, `grade` from ".parent::table()." where role like 'ROLE_PROFESSEUR'";
-         $results=$db->executeSelect($sql);
-            // pour fermer la c
-            
-         $db->closeConnexion();
-        
-        return $results;
+        $sql= "select `nom_complet`, `role`, `grade` from ? where role like 'ROLE_PROFESSEUR'";
+        return parent::findBY($sql,[parent::table()]);
+        //  // appel de de la fonction dataBase 
+        //  $db=parent::database();
+        //  // ouvrir la connection
+        //  $db->connexionBD();
+        //  $sql= "select `nom_complet`, `role`, `grade` from ".parent::table()." where role like 'ROLE_PROFESSEUR'";
+        //  $results=$db->executeSelect($sql);
+        //     // pour fermer la c
+        //      $db->closeConnexion();
+        //  return $results;
+
     }
     public function insert():int
     {
